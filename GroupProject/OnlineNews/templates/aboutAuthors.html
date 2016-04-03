@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dang Minh The - Profile Page</title>
+	<!-- Latest compiled and minified CSS -->
+	<!-- jQuery library -->
+	{% load staticfiles %}
+	<script src = {% static 'libs/angularjs/angular.min.js' %}></script>
+	<script src = {% static 'libs/jquery/jquery-2.0.2.min.js' %}></script>
+	<script src= {% static 'OnlineNews/apps/Js/aboutAuthors.model.js' %}></script>
+</head>
+<body>
+	{% csrf_token %}
+	<div id="bodyField" class="col-md-12" ng-app = "AboutAuthorsApp">
+		<div class="col-md-6 col-md-offset-1 content" ng-controller = "AboutAuthorsController">
+			<div ng-model = "authors">
+				<p ng-bind = "authors.Name"></p>
+				<p ng-bind = "authors.Email"></p>
+				<p ng-bind = "authors.AboutAuthor"></p>
+			</div>
+			<input type = "hidden" id = "jsonData" value="{{ data }}"></input>
+			<input type = "hidden" id = "clickBinding" ng-click = "init()"/></input>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	$('document').ready(function () {
+		$('#clickBinding').click();
+	});
+</script>
+</html>
